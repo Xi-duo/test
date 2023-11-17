@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+ .box{
+    width: 500px;
+    padding: 10px;
+    border: 1px solid black;
+ }
+ .box div{
+    width: 180px;
+    height: 50px;
+    background-color: grey;
+ }
+ .box div:hover{
+    transition-duration: 1s ;
+    background-color: yellow;
+    font-size: 10px;
+ }
+ a{
+    text-decoration: none;
+ }
+ p{
+    color: red;
+ }
+ ul li:nth-child(1){
+    font-size: 20px;
+ }
+ ul li:nth-child(2){
+    font-size: 30px;
+ }
+ ul li:nth-child(3){
+    font-size: 40px;
+ }
+    </style>
+</head>
+<body>
+    <div class="box">
+    <a href="#">没有下划线的a标签</a>
+    <p>红色的字体</p>
+    <div class="yellow">会变成黄色的盒子，字几个还要遭变小</div>
+    <ul>
+        <li>20px的字体大小</li>
+        <li>30px的字体大小</li>
+        <li>40px的字体大小</li>
+    </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      html, body{
+        height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        div{
+            width: 100px;
+            height: 300px;
+            background-color: green;
+            border: 10px solid lightgreen;
+            border-radius: 30px;
+        }
+        div:hover{
+            
+            transform: scale(1.2,1.2);
+            box-shadow: 2px 2px 4px rgba(45, 37, 37, 0.3);
+            transition: .2s linear;
+            
+        }
+        div:not(:hover){
+            transition: .2s linear;
+        }
+        input[type = "button"]{
+            display: block;
+            width: 60px;
+            height: 30px;
+            background-color: lightblue;
+            border-radius: 5px;
+            margin: 0 auto;
+            margin-top: 255px ;
+            border: none;
+            
+        }
+        input[type = "button"]:hover{
+            transition: .2s linear;
+            transform: scale(0.8,0.8);
+
+        }
+        input[type = "button"]:not(:hover){
+            transition: .2s;
+        }
+        input[type = "button"]:active{
+            transition: .2s linear;
+            transform: scale(0.6,0.6);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="button" value="bottom">
+    </div>
+</body>
+</html>
