@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.underline-gradient {
+  position: relative;
+  display: inline;
+  color: black; 
+  text-decoration: none; 
+}
+
+.underline-gradient::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; /* 调整下划线位置 */
+  width: 0;
+  height: 1px; /* 下划线粗细 */
+  background: linear-gradient(to right, #ff0000, #00bfff);
+  transition: width 0.3s ease; 
+}
+
+.underline-gradient:hover::after {
+  width: 100%; /* 鼠标悬停时，将宽度调整为100%，从左到右显示下划线 */
+}
+    </style>
+</head>
+<body>
+    <p class="underline-gradient">
+        哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈   </p>
+</body>
+</html>
