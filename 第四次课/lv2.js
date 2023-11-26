@@ -9,3 +9,6 @@ function flattenArray(arr) {
     });
     return result; // 返回扁平化后的结果
   }
+let arr = [1, [2, 3], [4, 5, [6, 7, 8]], 9];
+let flattenedArr = flattenArray(arr);
+console.log(flattenedArr);
