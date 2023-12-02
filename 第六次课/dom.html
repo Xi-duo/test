@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="color-list">
+        <li>red</li>
+        <li>yellow</li>
+        <li>blue</li>
+        <li>green</li>
+        <li>black</li>
+        <li>white</li>
+    </ul>
+        <script>
+            const color_list = document.getElementById('color-list');
+            const colors = color_list.getElementsByTagName('li');
+            function showColor(e) {
+                const x = e.target;
+                if (x.nodeName.toLowerCase() === 'li') {
+                    alert('The color is ' + x.innerHTML);
+                }
+            }
+            color_list.addEventListener('click', showColor, false);
+        </script>
+</body>
+</html>
