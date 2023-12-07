@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>一等奖: <span id="one"></span></h1>
+    <h1>二等奖: <span id="two"></span></h1>
+    <h1>三等奖: <span id="three"></span></h1>
+    <script>''
+        const personArray = ['rsj','fc','ljj','zy','zpx','cwz','syb'];     
+        // const one = document.querySelector('#one')
+        // const random = Math.floor(Math.random()*personArray.length)
+        // one.innerHTML = personArray[random]
+       const all = document.querySelectorAll('span')
+    for(let i = 0;i<=all.length;i++){
+        const random = Math.floor(Math.random()*personArray.length)
+        all[i].innerHTML = personArray[random];
+        personArray.splice(random,1);
+    }
+    </script>
+</body>
+</html>
