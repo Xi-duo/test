@@ -3,20 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>content</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      body{
+        background-color: #fae5e5;
+      }
+      .whole{
+        display: flex;
+        justify-content: center;
+        
+       
+      }
+      
+      textarea{
+      border: 1px solid rgb(194, 190, 190);
+      border-radius: 5px;
+      height: 100px;
+      width: 1000px;
+      background-color: whitesmoke;
+      float: left;
+      
+      }
+     
+      [type = "submit"]{
+        border: 1px solid rgb(194, 190, 190);
+      border-radius: 5px;
+      height: 100px;
+      width: 100px;
+      background-color: rgb(182, 225, 242);
+      float: left;
+      margin-left: 3px;
+      }
+       .comment{
+        
+        height: 100px;
+        border: 1px solid rgb(135, 135, 135);
+        line-height: 100px;
+        border-radius: 2px;
+        margin-top: 15px;
+      }
+      .comment img{
+        height: 100px;
+        border-radius: 100%;
+        float: left;
+      }
+      .comment p {
+        text-indent: 1em;;
+      }
+      .delete,.myButton{
+        display: none;
+        position: absolute;
+        width: 200px;
+        height: 50px;
+        background-color: white;
+        transition: all,1s;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2)
+      }
+      .delete{
+        border: 0.1px solid grey  ;
+        border-radius: 5px 5px 0 0 ;
+      }
+      .myButton{
+        border: 0.1px solid grey  ;
+        border-radius: 0 0 5px 5px;
+      }
+      .delete:hover,.myButton:hover{
+        background-color: rgb(211, 223, 233);
+      }
+      .textLength{
+        display: none;
+        text-align: right;
+        padding-right: 260px;
+      }
+      .successful{
+        display: none;
+        width: 150px;
+        height: 50px;
+        border-radius: 20px;
+        text-align: center;
+        line-height: 50px;
+        background-color: black;
+        animation: fade 2s;
+        color: white;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        
+      }
+      @keyframes fade {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+      }
+     
+    
+      
+    
+    </style>
 </head>
 <body>
-    <button id="button" onclick="handleClick()">ClickMe</button>
+  <div class="whole">
+    <div>
+      <textarea name="" id="contentInput"  cols="30" rows="10"></textarea>
+    </div>
+    <div>
+      <button type="submit" class="button" >发布</button>
+    </div>
+  </div>
+  <div class="commentArea">
+    <p class="textLength">字数:0</p>
+    <p>来写一条评论吧~</p>
+    <div class="comments"></div>
+  </div>
+  <div class="successful">评论成功！！！</div>     
+  <!-- 基本的几样东西                   -->
+  
+    
     <script>
-    
-      function handleClick()
-      {
-    
-        let button = document.getElementById("button");
-    
-        button.innerHTML = "hello!"
-    
-      }
+      const comments = document.querySelector('.comments ')      
+      const contentInput = document.querySelector('#contentInput')  
+      const input = document.querySelector('.button')
+      const commentsDiv = document.querySelector('.comments') 
+      const textLength = document.querySelector('.textLength')
+      const successful = document.querySelector('.successful')  
+            //该拿的都拿了
+      
+      
+      contentInput.addEventListener('input', function(e) { //检测输入
+      const commentText = contentInput.value.trim();    //把空格自动缩减了
+      textLength.style.display = 'block';          //一开始输入，就显示出来开始记录字数
+      textLength.innerHTML = `字数：${commentText.length}`;        
+      });
+
+function win(){
+  successful.style.display = 'block'
+  setTimeout(function(){
+    successful.style.display = 'none'; ///显示成功的函数，先让评论成功显示出来，在定时给他关了
+
+  },2000)
+}
+
+
+function publish() {                                    //发布的函数
+        const commentText = contentInput.value;
+        
+        
+
+      if (commentText.trim() !== '') {
+        
+        const commentDiv = document.createElement('div');   //创造新的盒子，就是评论区啦
+        commentDiv.classList.add('comment'); //新的盒子获得属性    //评论区的头像，句子，还有删除键//拼接句子
+        commentDiv.innerHTML = `
+          <img src = "b_d2801a629f85936ac825ff1d4fca3483.jpg">   
+          <p> :${commentText}</p>    
+          <button class = "delete"> 删除（delete） </button>
+          <button class = "myButton">特别的删除</button>
+         
+        `;
+        const first = commentsDiv.firstElementChild;
+        commentsDiv.insertBefore(commentDiv,first);  //最新发布的评论的在上面
+
+        
+        commentDiv.addEventListener('contextmenu',function(e){
+          e.preventDefault();       //不让浏览器默认的右键窗口弹出来，弹出属于自己的
+          const DELETE = document.querySelector('.delete')
+          const myButton = document.querySelector('.myButton')
+          
+          myButton.style.display = 'block';
+          DELETE.style.display = 'block';
+           //删除，显现
+          const mouseX = e.clientX;
+          const mouseY = e.clientY;                       //定位鼠标
+          DELETE.style.left = mouseX + 'px';
+          DELETE.style.top = mouseY + 'px';
+          myButton.style.left = mouseX + 'px';
+          myButton.style.top = (mouseY + 49) + 'px';
+          DELETE.addEventListener('click',function(){
+            commentsDiv.removeChild(commentDiv);         //点击删除，那条评论没有了
+          })
+          myButton.addEventListener('click',function(){
+            window.open('https://ys.mihoyo.com/main/', '_blank');
+            setTimeout(function() {
+    window.location.href = "https://ys-api.mihoyo.com/event/download_porter/link/ys_cn/official/pc_default', '_blank"
+  }, 100);
+          })
+          document.addEventListener('click', function() {
+          DELETE.style.display = 'none';                    //点的不是评论区删除框框里的，就让删除消失
+          }) 
+          document.addEventListener('click', function() {
+          myButton.style.display = 'none';                    //点的不是评论区删除框框里的，就让删除消失
+          })
+
+        })
+        
+        
+        textLength.innerHTML = "字数:" 
+        contentInput.value = ''                  //每次发布了评论就给他还原了               
+    }
+  
+  
+}       //发布的函数
+
+
+contentInput.addEventListener('keyup' , function(e){
+        if(e.key === 'Enter'){
+          publish();
+          win();                        //启动，点回车也可以一键发布
+          
+        }
+      })
+
+ input.addEventListener('click',function(){
+  publish();
+  win();                 //启动，点发布就发布
+ })
+   
+
+      
     </script>
 </body>
 </html>
