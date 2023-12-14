@@ -78,26 +78,29 @@
 //   .then(() => moveRight(ball2, 3000))
 //   .then(() => moveRight(ball3, 3000));
 
-// const moveRight = function(ball , time){
-//      return new Promise((resolve) =>{
-//         setTimeout(() => {
-//             ball.classList.add('ball')
-//             resolve();
-//         },time);
-//     })
-// }
 
-// const move = async function(ball1,ball2,ball3){
-//     try{
-//      await moveRight(ball1,0)
-//      await moveRight(ball2,3000)
-//      await moveRight(ball3,3000)
-//     }catch(e){
-//         console.log(e);
-//     }
-// }
 
-// move(ball1,ball2,ball3);
+        //async
+const moveRight = function(ball , time){
+     return new Promise((resolve) =>{
+        setTimeout(() => {
+            ball.classList.add('ball')
+            resolve();
+        },time);
+    })
+}
+
+const move = async function(ball1,ball2,ball3){
+    try{
+     await moveRight(ball1,0)
+     await moveRight(ball2,3000)
+     await moveRight(ball3,3000)
+    }catch(e){
+        console.log(e);
+    }
+}
+
+move(ball1,ball2,ball3);
 
 
     </script>
