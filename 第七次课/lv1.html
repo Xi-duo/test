@@ -1,0 +1,108 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .ballBox{
+        width: 800px;
+        height: 800px;
+        margin:  auto;
+        border: 1px solid rgb(215, 204, 204);
+    }
+    .ball1 {
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+        background-color: red;
+        
+        
+    }
+    .ball{
+        animation: moveRight 3s linear forwards;
+    }
+    .ball2 , .ball3{
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+        background-color: red;
+    }
+    @keyframes moveRight{
+  0%{transform: translate(0,0);}
+ 100% {transform: translate(600px,0);}
+}
+    
+</style>
+<body>
+       <div class="ballBox">                  
+        <div class="ball1"></div>
+        <div class="ball2"></div>
+        <div class="ball3"></div>
+    </div>
+    <script>
+        
+        const ball1 = document.querySelector('.ball1')
+        const ball2 = document.querySelector('.ball2')
+        const ball3 = document.querySelector('.ball3')
+        
+        //定时器
+        // setTimeout(() => {
+        //     ball1.classList.add('ball')
+        //     setTimeout(()=>{
+        //         ball2.classList.add('ball')
+        //         setTimeout(()=>{
+        //         ball3.classList.add('ball')
+        //         },3000)
+        //     },3000)
+        // },0)
+
+
+
+        //链式回调
+// function moveRight(ball, time) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       ball.classList.add('ball')
+//       resolve();
+//     }, time);
+//   });x
+// }
+
+// moveRight(ball1, 0)
+//   .then(() => moveRight(ball2, 3000))
+//   .then(() => moveRight(ball3, 3000));
+
+// const moveRight = function(ball , time){
+//      return new Promise((resolve) =>{
+//         setTimeout(() => {
+//             ball.classList.add('ball')
+//             resolve();
+//         },time);
+//     })
+// }
+
+// const move = async function(ball1,ball2,ball3){
+//     try{
+//      await moveRight(ball1,0)
+//      await moveRight(ball2,3000)
+//      await moveRight(ball3,3000)
+//     }catch(e){
+//         console.log(e);
+//     }
+// }
+
+// move(ball1,ball2,ball3);
+
+
+    </script>
+</body>
+</html>                       
+
+
+

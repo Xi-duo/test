@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        margin: 300px auto;
+        width: 800px;
+        height: 200px;
+        border: 1px solid rgb(205, 201, 201);  
+        
+    }
+    h2{
+        text-align: center;
+    }
+    .poem{
+        font-size: 20px;
+        text-indent: 2em;
+    }
+</style>
+<body>
+    <div class="box">
+        <h2>《记承天寺夜游》</h2>
+        <p class="poem"></p>
+
+    </div>
+    <script>
+        const poem = document.querySelector('.poem')
+        const poemArray = "元丰六年十月十二日夜，解衣欲睡，月色入户，欣然起行。念无与为乐者，遂至承天寺寻张怀民。怀民亦未寝，相与步于中庭。庭下如积水空明，水中藻、荇交横，盖竹柏影也。何夜无月？何处无竹柏？但少闲人如吾两人者耳。"
+        let i = 0;
+        function showPoem() {
+            return new Promise((resolve , reject) =>{
+            if (i < poemArray.length) {
+                poem.innerHTML += poemArray[i];
+                i++;
+                resolve();
+            } else {                
+                reject();
+                clearInterval(showTime);
+                
+            }
+         })
+    }
+    const showTime = setInterval(() =>{
+        showPoem()
+        .then(() =>{
+         
+        })
+        .catch((err) =>{
+            console.log(err);
+        })
+    },200)
+        
+    </script>
+</body>
+</html>
